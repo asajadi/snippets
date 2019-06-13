@@ -1,0 +1,8 @@
+# Fixing Jupyter Markdown LateX Codes to be MathJax Compatible:
+# Replace $ with $$, and wrap equation and align environment with $$
+cat $1 | 
+sed -e $'s/\$/$$/g' | 
+sed -e $'s/\\\\begin{equation}/$$\\\n\\\\begin{equation}/g' | 
+sed -e $'s/\\\\end{equation}/\\\\end{equation}\\\n$$/g' | 
+sed -e $'s/\\\\begin{align}/$$\\\n\\\\begin{align}/g' | 
+sed -e $'s/\\\\end{align}/\\\\end{align}\\\n$$/g' 
